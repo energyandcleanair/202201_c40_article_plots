@@ -1,0 +1,7 @@
+scenario,type,value
+global_15c,Coal power,100
+global_15c,Oil&gas power,50
+global_15c,Other energy use,300
+ref,Coal power,200
+all_pledges,Coal power,150
+15c_aligned,Coal power,80
