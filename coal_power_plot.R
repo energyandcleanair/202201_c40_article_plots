@@ -15,13 +15,14 @@ data_segment <- data %>%
     x_prev=lag(x)) %>%
   filter(!is.na(value_prev))
 
+barwidth <- 0.6
 
 ggplot(data, aes(x=scenario,
                  y=value)) +
   geom_bar(aes(fill=scenario),
            stat="identity",
            color="#666666",
-           width=0.6,
+           width=barwidth,
            show.legend = F) +
   geom_text(aes(label=gsub("er en","er\nen", type), col=scenario),
             position = position_stack(vjust = 0.5),
@@ -29,7 +30,7 @@ ggplot(data, aes(x=scenario,
             show.legend = F) +
   geom_segment(data = data_segment,
                color="#666666",
-               aes(x = x_prev+0.3, xend = x - 0.3, y = value_prev, yend = value)) +
+               aes(x = x_prev + barwidth/2, xend = x - barwidth / 2, y = value_prev, yend = value)) +
   theme_light() +
   theme(plot.subtitle = element_text(hjust = 0.5),
         axis.text = element_text(color = "black")) +
